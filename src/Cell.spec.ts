@@ -50,7 +50,14 @@ describe("Cell", () => {
     expect(newCell.isAlive()).toBe(true)
   })
 
-  it.todo("dies if it has 4 neighbours")
+  it("dies if it has 4 neighbours", () => {
+    const cell = Cell.alive()
+
+    const newCell = cell.tick(4)
+
+    expect(newCell.isAlive()).toBe(false)
+  })
+
   it.todo("dies if it has 8 neighbours")
   it.todo("revives if it has 3 neighbours")
   it.todo("stays dead if it has 2 neighbours")
