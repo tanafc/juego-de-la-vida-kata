@@ -89,4 +89,12 @@ describe("Cell", () => {
 
     expect(newCell.isAlive()).toBe(false)
   })
+
+  it("throws an error if number of neighbours is negative", () => {
+    const cell = Cell.dead()
+
+    const result = () => cell.tick(-1)
+
+    expect(result).toThrowError("Number of neighbours must be a positive integer")
+  })
 })
