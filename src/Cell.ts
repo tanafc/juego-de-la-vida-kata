@@ -1,27 +1,27 @@
-export class Cell {
-  constructor(private readonly life: boolean) {}
-
+export abstract class Cell {
   static alive() {
-    return new Cell(true)
+    return new AliveCell()
   }
 
   static dead() {
-    return new Cell(false)
+    return new DeadCell()
   }
 
-  isAlive() {
-    return this.life
-  }
+  abstract isAlive(): boolean
 
-  tick(numberOfNeighbours: number) {
-    if (this.isAlive() === false) {
-      if (numberOfNeighbours === 3) return Cell.alive()
-      return Cell.dead()
-    }
+  abstract tick(numberOfNeighbours: number): Cell
+}
+
+class AliveCell extends Cell {
+  tick(numberOfNeighbours: number): Cell {
     if (this.isOvercrowded(numberOfNeighbours) || this.isLonely(numberOfNeighbours)) {
       return Cell.dead()
     }
     return Cell.alive()
+  }
+
+  isAlive() {
+    return true
   }
 
   private isLonely(numberOfNeighbours: number) {
@@ -30,5 +30,20 @@ export class Cell {
 
   private isOvercrowded(numberOfNeighbours: number) {
     return numberOfNeighbours > 3
+  }
+}
+
+class DeadCell extends Cell {
+  tick(numberOfNeighbours: number): Cell {
+    if (this.canRevive(numberOfNeighbours)) return Cell.alive()
+    return Cell.dead()
+  }
+
+  isAlive() {
+    return false
+  }
+
+  private canRevive(numberOfNeighbours: number) {
+    return numberOfNeighbours === 3
   }
 }
