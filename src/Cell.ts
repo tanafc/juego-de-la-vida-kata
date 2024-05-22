@@ -14,6 +14,9 @@ export class Cell {
   }
 
   tick(numberOfNeighbours: number) {
+    if (this.isAlive() === false) {
+      return Cell.dead()
+    }
     if (this.isOvercrowded(numberOfNeighbours) || this.isLonely(numberOfNeighbours)) {
       return Cell.dead()
     }
