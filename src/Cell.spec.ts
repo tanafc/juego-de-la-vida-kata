@@ -26,7 +26,7 @@ describe("Cell", () => {
     expect(newCell.isAlive()).toBe(false)
   })
 
-  it.todo("dies if it has 1 neighbour", () => {
+  it("dies if it has 1 neighbour", () => {
     const cell = Cell.alive()
 
     const newCell = cell.tick(1)

@@ -14,7 +14,7 @@ export class Cell {
   }
 
   tick(numberOfNeighbours: number) {
-    if (numberOfNeighbours > 0) {
+    if (numberOfNeighbours > 1) {
       return Cell.alive()
     }
     return Cell.dead()
