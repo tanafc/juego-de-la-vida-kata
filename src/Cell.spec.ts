@@ -82,5 +82,11 @@ describe("Cell", () => {
     expect(newCell.isAlive()).toBe(false)
   })
 
-  it.todo("stays dead if it has 4 neighbours")
+  it("stays dead if it has 4 neighbours", () => {
+    const cell = Cell.dead()
+
+    const newCell = cell.tick(4)
+
+    expect(newCell.isAlive()).toBe(false)
+  })
 })
