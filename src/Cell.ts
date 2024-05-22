@@ -12,4 +12,8 @@ export class Cell {
   isAlive() {
     return this.life
   }
+
+  tick(numberOfNeighbours: number) {
+    return Cell.dead()
+  }
 }

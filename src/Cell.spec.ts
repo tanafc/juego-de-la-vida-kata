@@ -1,5 +1,4 @@
 import { describe, it, expect } from "vitest"
-import { myFunction } from "./main.js"
 import { Cell } from "./Cell.js"
 
 describe("Cell", () => {
@@ -19,7 +18,14 @@ describe("Cell", () => {
     expect(result).toBe(false)
   })
 
-  it.todo("dies if it has no neighbours")
+  it("dies if it has no neighbours", () => {
+    const cell = Cell.alive()
+
+    const newCell = cell.tick(0)
+
+    expect(newCell.isAlive()).toBe(false)
+  })
+
   it.todo("stays alives if it has 3 neighbours")
   it.todo("stays alives if it has 2 neighbours")
   it.todo("dies if it has 4 neighbours")
