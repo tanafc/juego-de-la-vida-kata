@@ -36,6 +36,7 @@ class AliveCell extends Cell {
 class DeadCell extends Cell {
   tick(numberOfNeighbours: number): Cell {
     if (numberOfNeighbours < 0) throw new Error("Number of neighbours must be a positive integer")
+    if (numberOfNeighbours > 8) throw new Error("Number of neighbours can't be more than 8")
 
     if (this.canRevive(numberOfNeighbours)) return Cell.alive()
     return Cell.dead()
