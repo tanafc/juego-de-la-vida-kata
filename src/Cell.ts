@@ -1,3 +1,5 @@
+import { NumberOfNeighbours } from "./NumberOfNeighbours.js"
+
 export abstract class Cell {
   static alive() {
     return new AliveCell()
@@ -35,8 +37,7 @@ class AliveCell extends Cell {
 
 class DeadCell extends Cell {
   tick(numberOfNeighbours: number): Cell {
-    if (numberOfNeighbours < 0) throw new Error("Number of neighbours must be a positive integer")
-    if (numberOfNeighbours > 8) throw new Error("Number of neighbours can't be more than 8")
+    const number = NumberOfNeighbours.of(numberOfNeighbours)
 
     if (this.canRevive(numberOfNeighbours)) return Cell.alive()
     return Cell.dead()
