@@ -11,7 +11,14 @@ describe("Cell", () => {
     expect(result).toBe(true)
   })
 
-  it.todo("can be created dead")
+  it("can be created dead", () => {
+    const cell = Cell.dead()
+
+    const result = cell.isAlive()
+
+    expect(result).toBe(false)
+  })
+
   it.todo("dies if it has no neighbours")
   it.todo("stays alives if it has 3 neighbours")
   it.todo("stays alives if it has 2 neighbours")

@@ -1,9 +1,15 @@
 export class Cell {
+  constructor(private readonly life: boolean) {}
+
   static alive() {
-    return new Cell()
+    return new Cell(true)
+  }
+
+  static dead() {
+    return new Cell(false)
   }
 
   isAlive() {
-    return true
+    return this.life
   }
 }
